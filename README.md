@@ -1,6 +1,10 @@
 # plant_store_app
 
-A new Flutter project.
+UI design
+![plant_app](https://user-images.githubusercontent.com/66944039/205598605-bad3f0c9-ab8f-4c04-88fb-46bd0ddbfeac.png)
+
+Design Credit
+- https://dribbble.com/shots/10752764-Plant-Store-app-Ui/attachments/2420631?mode=media
 
 ## Getting Started
 
