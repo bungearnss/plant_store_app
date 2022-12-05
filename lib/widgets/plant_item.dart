@@ -89,6 +89,52 @@ class PlantItem extends StatelessWidget {
                 child: Image.asset(plant.imgUrl),
               ),
             ),
+            Positioned(
+              bottom: 80,
+              right: 28,
+              child: SizedBox(
+                width: 24,
+                height: 24,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: accentColor,
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(5),
+                    ),
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                      size: 18,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 10,
+              left: 8,
+              child: SizedBox(
+                width: 24,
+                height: 24,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
+                  child: Center(
+                    child: Icon(
+                      Icons.favorite,
+                      color: Colors.grey.shade300,
+                      size: 13,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
