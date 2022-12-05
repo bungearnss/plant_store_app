@@ -28,7 +28,7 @@ final plantData = [
     water: 5,
   ),
   Plant(
-    title: "Swiss Cheese Monstera",
+    title: "Swiss Cheese",
     plantType: "Monstera deliciosa",
     rate: 5,
     price: 54,
