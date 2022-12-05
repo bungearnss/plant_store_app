@@ -6,7 +6,7 @@ class Plant {
   int price;
   String imgUrl;
   int light;
-  int moisture;
+  int humidity;
   int temp;
   int water;
 
@@ -18,7 +18,7 @@ class Plant {
     required this.price,
     required this.imgUrl,
     required this.light,
-    required this.moisture,
+    required this.humidity,
     required this.temp,
     required this.water,
   });
