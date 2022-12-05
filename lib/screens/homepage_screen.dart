@@ -12,7 +12,6 @@ class HomepageScreen extends StatefulWidget {
 }
 
 class _HomepageScreenState extends State<HomepageScreen> {
-  final double _boxHeight = 460;
   final double _iamgeSize = 250;
   final double _pickHight = 450;
   final List<String> _menuList = ["All", "Indoor", "Outdoor", "Garden"];
