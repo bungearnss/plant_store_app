@@ -51,10 +51,10 @@ class _HomepageScreenState extends State<HomepageScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text(
-                            "Florest",
+                            "Discover\nthe joy of garden.",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 25,
+                              fontSize: 24,
                               fontWeight: FontWeight.w800,
                             ),
                           ),

@@ -3,16 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:plant_store_app/constants/colors.dart';
 import '../models/plant.dart';
 
-class PlantItem extends StatelessWidget {
+class PlantItem extends StatefulWidget {
   Plant plant;
 
   PlantItem({super.key, required this.plant});
 
   @override
+  State<PlantItem> createState() => _PlantItemState();
+}
+
+class _PlantItemState extends State<PlantItem> {
+  bool isFavorite = false;
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
-      child: Container(
+      child: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Stack(
           children: [
@@ -35,23 +42,23 @@ class PlantItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(plant.title,
+                        Text(widget.plant.title,
                             style: Theme.of(context).textTheme.titleMedium),
-                        Text(plant.plantType,
+                        Text(widget.plant.plantType,
                             style: Theme.of(context).textTheme.bodySmall),
                         SizedBox(
                           width: 50,
                           height: 18,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 4,
-                            itemBuilder: ((context, index) {
-                              return Icon(
-                                Icons.star,
-                                color: Colors.grey.shade300,
-                                size: 10,
-                              );
-                            }),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              for (int i = 0; i < widget.plant.rate; i++)
+                                Icon(
+                                  Icons.star,
+                                  color: secondaryColor,
+                                  size: 10,
+                                ),
+                            ],
                           ),
                         ),
                       ],
@@ -59,7 +66,7 @@ class PlantItem extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 12),
                       child: Text(
-                        "฿${plant.price}",
+                        "฿${widget.plant.price}",
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ),
@@ -86,7 +93,7 @@ class PlantItem extends StatelessWidget {
               child: SizedBox(
                 width: 188,
                 height: 170,
-                child: Image.asset(plant.imgUrl),
+                child: Image.asset(widget.plant.imgUrl),
               ),
             ),
             Positioned(
@@ -115,21 +122,30 @@ class PlantItem extends StatelessWidget {
             Positioned(
               top: 10,
               left: 8,
-              child: SizedBox(
-                width: 24,
-                height: 24,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isFavorite = !isFavorite;
+                  });
+                },
+                child: SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
                     ),
-                  ),
-                  child: Center(
-                    child: Icon(
-                      Icons.favorite,
-                      color: Colors.grey.shade300,
-                      size: 13,
+                    child: Center(
+                      child: Icon(
+                        Icons.favorite,
+                        color: isFavorite == true
+                            ? Colors.red
+                            : Colors.grey.shade300,
+                        size: 13,
+                      ),
                     ),
                   ),
                 ),
