@@ -3,7 +3,6 @@ import 'package:plant_store_app/constants/colors.dart';
 import 'package:plant_store_app/widgets/plant_item.dart';
 
 import '../models/plant.dart';
-import '../widgets/appbar/detail_appbar.dart';
 import '../widgets/reviewer_item.dart';
 import '../widgets/button.dart';
 
@@ -16,8 +15,17 @@ class PlantDetailScreen extends StatefulWidget {
 }
 
 class _PlantDetailScreenState extends State<PlantDetailScreen> {
+  bool isFav = false;
+
   void _isBack() {
     Navigator.pop(context);
+  }
+
+  void _isFav() {
+    setState(() {
+      isFav = !isFav;
+    });
+    print("isFav :$isFav");
   }
 
   @override
@@ -28,7 +36,7 @@ class _PlantDetailScreenState extends State<PlantDetailScreen> {
       child: Scaffold(
         extendBodyBehindAppBar: true,
         backgroundColor: const Color.fromRGBO(242, 242, 242, 1),
-        appBar: detailAppBar(null, _isBack),
+        appBar: detailAppBar(_isFav, _isBack),
         body: Stack(
           children: [
             Padding(
@@ -272,6 +280,53 @@ class _PlantDetailScreenState extends State<PlantDetailScreen> {
           Radius.circular(10),
         ),
         color: color,
+      ),
+    );
+  }
+
+  PreferredSize? detailAppBar(
+      void Function()? isFavorite, void Function()? isBack) {
+    return PreferredSize(
+      preferredSize: const Size.fromHeight(70),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: backColor,
+              size: 20,
+            ),
+            onPressed: isBack,
+          ),
+          actions: [
+            GestureDetector(
+              onTap: isFavorite,
+              child: Stack(
+                children: [
+                  Container(
+                    width: 30,
+                    height: 30,
+                    margin: const EdgeInsets.only(top: 12, right: 10),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                    ),
+                    child: Icon(
+                      Icons.favorite,
+                      color: Colors.grey.shade300,
+                      size: 13,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
