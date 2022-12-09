@@ -16,6 +16,7 @@ class PlantDetailScreen extends StatefulWidget {
 
 class _PlantDetailScreenState extends State<PlantDetailScreen> {
   bool isFav = false;
+  int itemCount = 1;
 
   void _isBack() {
     Navigator.pop(context);
@@ -25,7 +26,18 @@ class _PlantDetailScreenState extends State<PlantDetailScreen> {
     setState(() {
       isFav = !isFav;
     });
-    print("isFav :$isFav");
+  }
+
+  void _countItem(String type) {
+    if (type == "add") {
+      setState(() {
+        itemCount = itemCount + 1;
+      });
+    } else if (type == "delete") {
+      setState(() {
+        itemCount = itemCount - 1;
+      });
+    }
   }
 
   @override
@@ -190,14 +202,24 @@ class _PlantDetailScreenState extends State<PlantDetailScreen> {
                               child: Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
-                                children: const [
-                                  Text(
-                                    "+",
+                                children: [
+                                  GestureDetector(
+                                    onTap: () => _countItem("add"),
+                                    child: const Text(
+                                      "+",
+                                    ),
                                   ),
-                                  Text("01",
-                                      style: TextStyle(
-                                          fontSize: 13, color: Colors.black)),
-                                  Text("-"),
+                                  Text(
+                                    "$itemCount",
+                                    style: const TextStyle(
+                                      fontSize: 13,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () => _countItem("delete"),
+                                    child: const Text("-"),
+                                  ),
                                 ],
                               ),
                             ),
@@ -318,7 +340,7 @@ class _PlantDetailScreenState extends State<PlantDetailScreen> {
                     ),
                     child: Icon(
                       Icons.favorite,
-                      color: Colors.grey.shade300,
+                      color: isFav == true ? Colors.red : Colors.grey.shade300,
                       size: 13,
                     ),
                   ),
