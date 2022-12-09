@@ -27,7 +27,7 @@ class _PlantDetailScreenState extends State<PlantDetailScreen> {
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar: true,
-        backgroundColor: Color.fromRGBO(242, 242, 242, 1),
+        backgroundColor: const Color.fromRGBO(242, 242, 242, 1),
         appBar: detailAppBar(null, _isBack),
         body: Stack(
           children: [

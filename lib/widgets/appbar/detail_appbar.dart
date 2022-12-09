@@ -5,7 +5,7 @@ import '../../constants/colors.dart';
 PreferredSize? detailAppBar(
     void Function()? isFavorite, void Function()? isBack) {
   return PreferredSize(
-    preferredSize: const Size.fromHeight(60),
+    preferredSize: const Size.fromHeight(70),
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5),
       child: AppBar(
@@ -22,20 +22,25 @@ PreferredSize? detailAppBar(
         actions: [
           GestureDetector(
             onTap: isFavorite,
-            child: Container(
-              width: 24,
-              height: 24,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(20),
+            child: Stack(
+              children: [
+                Container(
+                  width: 30,
+                  height: 30,
+                  margin: const EdgeInsets.only(top: 12, right: 10),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
+                  ),
+                  child: Icon(
+                    Icons.favorite,
+                    color: Colors.grey.shade300,
+                    size: 13,
+                  ),
                 ),
-              ),
-              child: Icon(
-                Icons.favorite,
-                color: Colors.grey.shade300,
-                size: 13,
-              ),
+              ],
             ),
           ),
         ],
