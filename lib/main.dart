@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './screens/homepage_screen.dart';
+import './screens/navigator_screen.dart';
 
 import './constants/colors.dart';
 
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: HomepageScreen(),
+      home: NavigatorScreen(),
     );
   }
 }

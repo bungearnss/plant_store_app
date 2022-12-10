@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:plant_store_app/constants/colors.dart';
-import 'package:plant_store_app/widgets/plant_item.dart';
 
 import '../models/plant.dart';
 import '../widgets/reviewer_item.dart';

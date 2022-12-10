@@ -9,6 +9,7 @@ class Plant {
   int humidity;
   int temp;
   int water;
+  List<String> category;
 
   Plant({
     required this.title,
@@ -21,5 +22,6 @@ class Plant {
     required this.humidity,
     required this.temp,
     required this.water,
+    required this.category,
   });
 }

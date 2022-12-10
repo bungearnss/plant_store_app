@@ -13,6 +13,7 @@ final plantData = [
     humidity: 20,
     temp: 70,
     water: 10,
+    category: ["Outdoor, Garden"],
   ),
   Plant(
     title: "ZZ Plant",
@@ -26,6 +27,7 @@ final plantData = [
     humidity: 20,
     temp: 20,
     water: 5,
+    category: ["Indoor"],
   ),
   Plant(
     title: "Swiss Cheese",
@@ -39,6 +41,7 @@ final plantData = [
     humidity: 60,
     temp: 40,
     water: 30,
+    category: ["Indoor", "Outdoor", "Garden"],
   ),
   Plant(
     title: "Palm Tree",
@@ -52,6 +55,7 @@ final plantData = [
     humidity: 50,
     temp: 22,
     water: 20,
+    category: ["Outdoor, Garden"],
   ),
   Plant(
     title: "Snake Plant",
@@ -65,5 +69,6 @@ final plantData = [
     humidity: 45,
     temp: 80,
     water: 10,
+    category: ["Indoor", "Outdoor, Garden"],
   ),
 ];

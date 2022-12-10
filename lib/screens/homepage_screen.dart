@@ -11,11 +11,13 @@ class HomepageScreen extends StatefulWidget {
   State<HomepageScreen> createState() => _HomepageScreenState();
 }
 
-class _HomepageScreenState extends State<HomepageScreen> {
+class _HomepageScreenState extends State<HomepageScreen>
+    with TickerProviderStateMixin {
   final double _iamgeSize = 250;
   final double _pickHight = 450;
   final List<String> _menuList = ["All", "Indoor", "Outdoor", "Garden"];
-  int _selectedMenu = 0;
+  int _selectedMenuIndex = 0;
+  String _selectedMenu = "All";
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +118,16 @@ class _HomepageScreenState extends State<HomepageScreen> {
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
-                            _selectedMenu = index;
+                            _selectedMenuIndex = index;
+                            if (index == 0) {
+                              _selectedMenu = "All";
+                            } else if (index == 1) {
+                              _selectedMenu = "Indoor";
+                            } else if (index == 2) {
+                              _selectedMenu == "Outdoor";
+                            } else if (index == 3) {
+                              _selectedMenu == "Garden";
+                            }
                           });
                         },
                         child: Container(
@@ -134,11 +145,11 @@ class _HomepageScreenState extends State<HomepageScreen> {
                             child: Text(
                               _menuList[index],
                               style: TextStyle(
-                                color: _selectedMenu == index
+                                color: _selectedMenuIndex == index
                                     ? secondaryColor
                                     : Colors.white,
-                                fontSize: _selectedMenu == index ? 18 : 16,
-                                fontWeight: _selectedMenu == index
+                                fontSize: _selectedMenuIndex == index ? 18 : 16,
+                                fontWeight: _selectedMenuIndex == index
                                     ? FontWeight.w600
                                     : FontWeight.normal,
                               ),
@@ -162,8 +173,9 @@ class _HomepageScreenState extends State<HomepageScreen> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: plantData.length,
                   itemBuilder: (context, index) {
+                    final plantItem = plantData[index];
                     return PlantItem(
-                      plant: plantData[index],
+                      plant: plantItem,
                     );
                   },
                 ),

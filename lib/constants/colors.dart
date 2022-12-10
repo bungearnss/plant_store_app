@@ -12,3 +12,5 @@ Color txtColor = const Color.fromRGBO(136, 143, 165, 1);
 Color greenColor = const Color.fromRGBO(202, 218, 180, 1);
 Color purpleColor = const Color.fromRGBO(180, 186, 218, 1);
 Color pinkColor = const Color.fromRGBO(232, 184, 186, 1);
+
+Color bottomBarColor = const Color.fromRGBO(20, 27, 52, 1);
