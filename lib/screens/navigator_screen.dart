@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import '../widgets/visible_animator.dart';
 import './homepage_screen.dart';
+import './favorite_screen.dart';
 import '../constants/colors.dart';
 
 import '../components/animated_bottom_bar.dart';
@@ -32,6 +32,13 @@ class _NavigatorScreenState extends State<NavigatorScreen>
     Icons.card_travel_rounded,
     Icons.favorite_border,
     Icons.notifications_none_rounded,
+  ];
+
+  final screenList = <Widget>[
+    const HomepageScreen(),
+    const HomepageScreen(),
+    const FavoriteScreen(),
+    const HomepageScreen(),
   ];
 
   @override
@@ -103,7 +110,7 @@ class _NavigatorScreenState extends State<NavigatorScreen>
     return Scaffold(
       body: NotificationListener<ScrollNotification>(
         onNotification: onScrollNotification,
-        child: const HomepageScreen(),
+        child: screenList[_bottomNavIndex],
       ),
       floatingActionButton: Visibility(
         visible: _isVisible,
@@ -146,7 +153,11 @@ class _NavigatorScreenState extends State<NavigatorScreen>
         notchAndCornersAnimation: borderRadiusAnimation,
         splashSpeedInMilliseconds: 300,
         gapLocation: GapLocation.center,
-        onTap: (index) => setState(() => _bottomNavIndex = index),
+        onTap: (index) {
+          setState(() {
+            _bottomNavIndex = index;
+          });
+        },
         hideAnimationController: _hideBottomBarAnimationController,
         blurEffect: false,
       ),

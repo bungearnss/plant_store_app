@@ -176,6 +176,7 @@ class _HomepageScreenState extends State<HomepageScreen>
                     final plantItem = plantData[index];
                     return PlantItem(
                       plant: plantItem,
+                      isFavScreen: false,
                     );
                   },
                 ),

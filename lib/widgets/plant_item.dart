@@ -6,8 +6,9 @@ import '../screens/plant_detail_screen.dart';
 
 class PlantItem extends StatefulWidget {
   Plant plant;
+  bool isFavScreen;
 
-  PlantItem({super.key, required this.plant});
+  PlantItem({super.key, required this.plant, required this.isFavScreen});
 
   @override
   State<PlantItem> createState() => _PlantItemState();
@@ -144,38 +145,40 @@ class _PlantItemState extends State<PlantItem> {
                   ),
                 ),
               ),
-              Positioned(
-                top: 10,
-                left: 8,
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      isFavorite = !isFavorite;
-                    });
-                  },
-                  child: SizedBox(
-                    width: 24,
-                    height: 24,
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                      ),
-                      child: Center(
-                        child: Icon(
-                          Icons.favorite,
-                          color: isFavorite == true
-                              ? Colors.red
-                              : Colors.grey.shade300,
-                          size: 13,
+              widget.isFavScreen
+                  ? Container()
+                  : Positioned(
+                      top: 10,
+                      left: 8,
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isFavorite = !isFavorite;
+                          });
+                        },
+                        child: SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                            ),
+                            child: Center(
+                              child: Icon(
+                                Icons.favorite,
+                                color: isFavorite == true
+                                    ? Colors.red
+                                    : Colors.grey.shade300,
+                                size: 13,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-              ),
             ],
           ),
         ),
