@@ -1,7 +1,7 @@
 # plant_store_app
 
 UI design
-![plant_app](https://user-images.githubusercontent.com/66944039/206749908-f758cb06-6aa6-40d1-a9e3-c1aa15394c2e.png)
+![plant_app](https://user-images.githubusercontent.com/66944039/206835195-993cd309-5cd5-498d-aae9-f4e2dbfc6b87.png)
 
 
 Design Credit
