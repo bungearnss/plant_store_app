@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import '../widgets/visible_animator.dart';
 import './homepage_screen.dart';
 import '../constants/colors.dart';
 
@@ -24,6 +25,7 @@ class _NavigatorScreenState extends State<NavigatorScreen>
   CurvedAnimation? fabCurve;
   CurvedAnimation? borderRadiusCurve;
   AnimationController? _hideBottomBarAnimationController;
+  bool _isVisible = true;
 
   final iconList = <IconData>[
     Icons.home_filled,
@@ -78,10 +80,16 @@ class _NavigatorScreenState extends State<NavigatorScreen>
         case ScrollDirection.forward:
           _hideBottomBarAnimationController!.reverse();
           _fabAnimationController!.forward(from: 0);
+          setState(() {
+            _isVisible = true;
+          });
           break;
         case ScrollDirection.reverse:
           _hideBottomBarAnimationController!.forward();
           _fabAnimationController!.reverse(from: 1);
+          setState(() {
+            _isVisible = false;
+          });
           break;
         case ScrollDirection.idle:
           break;
@@ -97,18 +105,21 @@ class _NavigatorScreenState extends State<NavigatorScreen>
         onNotification: onScrollNotification,
         child: const HomepageScreen(),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: accentColor,
-        child: const Icon(
-          Icons.qr_code_scanner_outlined,
-          color: Colors.white,
+      floatingActionButton: Visibility(
+        visible: _isVisible,
+        child: FloatingActionButton(
+          backgroundColor: accentColor,
+          child: const Icon(
+            Icons.qr_code_scanner_outlined,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            _fabAnimationController!.reset();
+            _borderRadiusAnimationController!.reset();
+            _borderRadiusAnimationController!.forward();
+            _fabAnimationController!.forward();
+          },
         ),
-        onPressed: () {
-          _fabAnimationController!.reset();
-          _borderRadiusAnimationController!.reset();
-          _borderRadiusAnimationController!.forward();
-          _fabAnimationController!.forward();
-        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomBar(
