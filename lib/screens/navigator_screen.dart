@@ -130,7 +130,7 @@ class _NavigatorScreenState extends State<NavigatorScreen>
         tabBuilder: (BuildContext context, int index) {
           final color = _bottomNavIndex == index
               ? Colors.white
-              : const Color.fromARGB(58, 66, 102, 255);
+              : const Color.fromARGB(104, 59, 77, 159);
           return Icon(
             iconList[index],
             size: 24,
